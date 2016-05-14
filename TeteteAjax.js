@@ -18,7 +18,8 @@ function doget(data, url, callback) {
     if (!url) return;
     if (!callback) callback = function (responsetext) { };
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", url , true);
+    xhr.open("GET", url, true);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhr.onreadystatechange = function () {
         if ((xhr.readyState === 4 && xhr.status === 0) || (xhr.readyState === 4 && xhr.status === 200)) {
 			console.log("callback doget-1");
@@ -33,6 +34,7 @@ function dopost(data, url, callback) {
     if (!callback) callback = function (responsetext) { };
     var xhr = new XMLHttpRequest();
     xhr.open("post", url);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhr.onreadystatechange = function () {
         if ((xhr.readyState === 4 && xhr.status === 0) || (xhr.readyState === 4 && xhr.status === 200)) {
             callback(xhr.responseText);
